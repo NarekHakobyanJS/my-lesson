@@ -1,23 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from './componnets/Header/Header';
+import { Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage/HomePage';
+import { fetchMovies } from './store/slices/movieSlice';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import FilmsPage from './pages/FilmsPage/FilmsPage';
 
 function App() {
+  const dispatch = useDispatch();
+  const { pageNumber } = useSelector((state) => state.moviesData)
+
+  useEffect(() => {
+    dispatch(fetchMovies(pageNumber))
+  }, [pageNumber])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Routes>
+        <Route path='/' element={<HomePage />} />
+        <Route path='/:id' element={<FilmsPage /> }/>
+      </Routes>
     </div>
   );
 }

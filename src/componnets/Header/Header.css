@@ -1,0 +1,17 @@
+header {
+    width: 100%;
+    padding: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top : 0;
+    left: 0;
+    right: 0;
+    background: gold;
+    margin-bottom: 35px;
+}
+
+.input{
+    position: relative;
+}

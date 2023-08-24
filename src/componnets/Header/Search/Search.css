@@ -1,0 +1,7 @@
+.searchBlock{
+    width: 350px;
+    height: 400px;
+    background: red;
+    position: absolute;
+    left: -200px;
+}
